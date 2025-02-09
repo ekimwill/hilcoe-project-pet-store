@@ -31,11 +31,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['view_pets'])) {
     require 'config.php';
     
-    $stmt = $pdo->prepare("SELECT * FROM pets");
-    $stmt->execute();
-    $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    header('Content-Type: application/json');
-    echo json_encode($pets);
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM pets");
+        $stmt->execute();
+        $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        if (empty($pets)) {
+            echo "No pets found in the database.";
+        } else {
+            header('Content-Type: application/json');
+            echo json_encode($pets);
+        }
+    } catch (PDOException $e) {
+        header('Content-Type: application/json');
+        echo json_encode(['error' => 'Failed to fetch pets: ' . $e->getMessage()]);
+    }
 }
 ?>
