@@ -1,4 +1,7 @@
 <?php
+header("Access-Control-Allow-Origin: *"); // Allow requests from all origins
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS"); // Specify allowed methods
+header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Specify allowed headers
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     require 'config.php';
 

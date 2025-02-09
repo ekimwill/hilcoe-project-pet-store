@@ -29,6 +29,7 @@ $tables = [
         name VARCHAR(255) NOT NULL,
         age INT NOT NULL,
         description VARCHAR(255) NOT NULL,
+        image VARCHAR(255) NOT NULL,
         type VARCHAR(255) NOT NULL
     )",
     "CREATE TABLE IF NOT EXISTS adoptions (
