@@ -28,4 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['approve_adoption'])) 
     echo json_encode(["message" => "Adoption approved successfully"]);
     exit;
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['view_adoptions'])) {
+    require 'config.php';
+    $stmt = $pdo->query("SELECT * FROM adoptions");
+    $adoptions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json');
+    echo json_encode($adoptions);
+    exit;
+}
+
 ?>
