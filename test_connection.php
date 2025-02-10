@@ -2,7 +2,7 @@
 $host = 'localhost:3309'; 
 $dbname = 'petstore';
 $username = 'root';
-$password = 'mysql_password';
+$password = '';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

@@ -32,14 +32,14 @@ $tables = [
         image VARCHAR(255) NOT NULL,
         type VARCHAR(255) NOT NULL
     )",
-    "CREATE TABLE IF NOT EXISTS adoptions (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        user_id INT NOT NULL,
-        pet_id INT NOT NULL,
-        status ENUM('pending', 'approved') DEFAULT 'pending',
-        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-        FOREIGN KEY (pet_id) REFERENCES pets(id) ON DELETE CASCADE
-    )"
+        "CREATE TABLE IF NOT EXISTS adoptions (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            pet_id INT NOT NULL,
+            status ENUM('pending', 'approved') DEFAULT 'pending',
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+            FOREIGN KEY (pet_id) REFERENCES pets(id) ON DELETE CASCADE
+        )"
 ];
 
 foreach ($tables as $table) {
